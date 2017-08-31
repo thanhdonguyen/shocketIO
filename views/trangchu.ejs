@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Socket IO</title>
+	<link rel="stylesheet" href="">
+	<script src="jquery-3.2.1.min.js"></script>
+	<script src="socket.io/socket.io.js"></script>
+	<script>
+	var socket = io("http://localhost:3000")
+	socket.on("SeverSendData",function(data){
+		$("#noidung").append(data+"<br>");
+	});
+	$(document).ready(function(){
+		$("#mrA").click(function(){
+			socket.emit("ClientSendData","Hello");
+		});
+	});
+	</script>
+</head>
+<body>
+	<div id="mrA">Click send</div>
+	<h1 id="noidung"></h1>
+</body>
+</html>
