@@ -13,12 +13,11 @@ io.on("connection", function(socket){
 	socket.on("disconnect", function(){
 		console.log(socket.id + ": Disconnect");
 	});
-	socket.on("ClientSendData", function(data){
-		console.log(socket.id + " send " + data);
-		// io.sockets.emit("SeverSendData", data+"888"); //gui cho tat ca
-		// socket.emit("SeverSendData", data);//gui cho chinh no
-		socket.broadcast.emit("SeverSendData", data); //gui cho tat ca tru chinh no
-	});
+	socket.on("ClientSendColor",function(color){
+		console.log(socket.id + " send " + color);
+		// io.sockets.emit("SeverSendColor", color);
+		socket.broadcast.emit("SeverSendColor", color);
+	})
 });
 
 app.get("/", function(req, res){
